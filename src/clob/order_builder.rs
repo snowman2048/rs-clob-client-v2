@@ -156,7 +156,7 @@ impl<OrderKind, K: AuthKind> OrderBuilder<OrderKind, K> {
         salt: u64,
         expiration: U256,
     ) -> Result<OrderPayload> {
-        let version = self.client.resolve_version(false).await?;
+        let version = 2;
         let maker = self.funder.unwrap_or(self.signer);
         let signer = if matches!(self.signature_type, SignatureType::Poly1271) {
             self.funder.ok_or_else(|| {
